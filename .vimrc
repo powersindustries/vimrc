@@ -1,12 +1,21 @@
-" ----------------------------------------------
+"----------------------------------------------
 " PLUGIN MANAGER.
 " ----------------------------------------------
-call plug#begin('~/.vim/plugged')
+" call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ycm-core/YouCompleteMe'
+Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/tagbar'
+Plug 'neoclide/coc.nvim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'ggreer/the_silver_searcher'
 
 call plug#end()
 
@@ -25,7 +34,7 @@ set laststatus=2
 let mapleader = " "
 
 " General Config.
-set encoding=utf-8
+set encoding=UTF-8
 set number
 set wrap
 set mouse=a
@@ -37,11 +46,32 @@ set softtabstop=4
 set expandtab
 set autoindent
 
+vnoremap <C-C> "+y
+" nnoremap <C-y > "+y
+
+" Autocomplete brackets
+inoremap { {}<Esc>ha
+
+
+" ----------------------------------------------
+" PLUGIN CONFIG.
+" ----------------------------------------------
+
 " NERDTree Settings.
 nnoremap <tab> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="-"
+set splitright
 
 " Ctrl P Fuzzy Finding.
 nnoremap <C-o> :CtrlP<CR>
 
 " Find in file.
 nnoremap <C-f> :/
+
+" Tagbar toggle.
+nmap <F8> :TagbarToggle<CR>
+
+" Coc Settings.
+inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
+inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
