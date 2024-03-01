@@ -1,7 +1,6 @@
 " ----------------------------------------------
 " PLUGIN MANAGER.
 " ----------------------------------------------
-" call plug#begin('~/.vim/plugged')
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -10,13 +9,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'preservim/tagbar'
-Plug 'neoclide/coc.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ggreer/the_silver_searcher'
 Plug 'ixru/nvim-markdown'
 Plug 'olimorris/onedarkpro.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
@@ -46,6 +44,9 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set autoindent
+
+" Removes ~ character from empty lines in sidebar.
+set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 
 vnoremap <C-C> "+y
 " nnoremap <C-y > "+y
@@ -79,6 +80,3 @@ nnoremap <C-o> :CtrlP<CR>
 " Coc Settings.
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
 inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
-
-" One Dark Pro Theme.
-colorscheme onedark
