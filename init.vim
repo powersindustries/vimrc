@@ -3,7 +3,6 @@
 " ----------------------------------------------
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
@@ -13,8 +12,18 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ggreer/the_silver_searcher'
 Plug 'ixru/nvim-markdown'
-Plug 'olimorris/onedarkpro.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'navarasu/onedark.nvim'
+
+" lsp zero
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
@@ -49,7 +58,6 @@ set autoindent
 set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 
 vnoremap <C-C> "+y
-" nnoremap <C-y > "+y
 
 " Autocomplete brackets.
 inoremap { {}<Esc>ha
@@ -59,24 +67,35 @@ inoremap { {}<Esc>ha
 " PLUGIN CONFIG.
 " ----------------------------------------------
 
-" NERDTree Settings.
-nnoremap <tab> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="-"
-set splitright
-
 " Markdown editor remapping.
 map <C-8> <Plug>Markdown_Fold 
 
 " Find in file.
 nnoremap <C-f> :/
 
+" Find in file.
+nnoremap <C-t> :tabnew<CR>
+
+" Go to definition.
+nnoremap <F12> <C-]>
+
+" Go back to previous position.
+nnoremap <C-_> <C-o>
+
+" Explore Mode.
+nmap <C-e> :Explore<CR>
+
 " Tagbar toggle.
 nmap <F8> :TagbarToggle<CR>
 
 " Ctrl P Fuzzy Finding.
-nnoremap <C-o> :CtrlP<CR>
+nnoremap <C-,> :CtrlP<CR>
 
-" Coc Settings.
-inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
-inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
+" Treesitter Settings.
+lua require('config/treesitter')
+
+" lsp zero Settings.
+lua require('config/lsp')
+
+" One Dark Pro
+colorscheme onedark
