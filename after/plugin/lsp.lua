@@ -1,36 +1,15 @@
--- local lsp_zero = require('lsp-zero')
+local cmp = require "cmp"
 
-
--- -- Default setup
--- lsp_zero.on_attach(function(client, bufnr)
---     lsp_zero.default_keymaps({buffer = bufnr})
--- end)
-
-
--- -- Auto Complete with Enter
--- local cmp = require('cmp')
-
--- cmp.setup({
---   mapping = cmp.mapping.preset.insert({
---     ['<TAB>'] = cmp.mapping.confirm( { select = false } ),
---   }),
--- })
-
-
--- -- Require languages
--- require('mason').setup({})
--- require('mason-lspconfig').setup({
---   ensure_installed = {
---       'tsserver',
---       'eslint',
---       'html',
---       'cssls',
---       'clangd',
---       'rust_analyzer'
---   },
---   handlers = {
---     function(server_name)
---       require('lspconfig')[server_name].setup({})
---     end,
---   },
--- })
+cmp.setup {
+    sources = cmp.config.sources({
+      { name = 'buffer' },
+      { name = 'path' },
+    }),
+    mapping = cmp.mapping.preset.insert({
+      ['<TAB>'] = cmp.mapping.confirm(
+      {
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true 
+      }),
+    }),
+}
