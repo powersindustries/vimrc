@@ -7,10 +7,12 @@ return require('packer').startup(function(use)
     -- Packer can manage itself.
     use 'wbthomason/packer.nvim'
 
-
     -- Editor.
     use 'tpope/vim-commentary'
     use 'godlygeek/tabular'
+
+    use 'preservim/nerdtree'
+    use 'ryanoasis/vim-devicons'
 
 
     -- Navigation and Finder.
@@ -35,8 +37,16 @@ return require('packer').startup(function(use)
 
 
     -- Autocomplete.
+    use {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'}
+    use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+    }
+
 
 end);
