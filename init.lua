@@ -13,9 +13,6 @@ vim.api.nvim_set_keymap('n', '<F12>', '<C-]>', { noremap = true })
 -- Go back to previous position.
 vim.api.nvim_set_keymap('n', '<C-_>', '<C-o>', { noremap = true })
 
--- Explore Mode.
-vim.api.nvim_set_keymap('n', '<C-e>', ':Explore<CR>', { noremap = true })
-
 -- Clipboard copy.
 vim.api.nvim_set_keymap('v', '<C-C>', '"+y', { noremap = true })
 
@@ -27,3 +24,5 @@ vim.o.fillchars = "fold: ,vert:│,eob: ,msgsep:‾"
 
 -- Color settings.
 vim.opt.termguicolors = true
+
+vim.opt.clipboard = "unnamedplus"
