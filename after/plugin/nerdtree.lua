@@ -1,8 +1,14 @@
 vim.g.NERDTreeShowHidden = 1
-vim.g.airline_powerline_fonts = 1
+vim.g.NERDTreeQuitOnOpen = 1
 
--- vim.opt.guifont = "JetBrainsMono\\ NFM:h10"
-vim.opt.guifont = "JetBrainsMono\\ :h22"
+-- Expland Nerdtree functionality.
+local function toggle_nerd_tree()
+    if vim.bo.filetype == "nerdtree" then
+        vim.cmd("NERDTreeToggle")
+    else
+        vim.cmd("NERDTreeFind")
+    end    
+end
 
--- Expland Nerdtree.
-vim.api.nvim_set_keymap('n', '<C-e>', ':NERDTreeFind<CR>', { noremap = true })
+
+vim.keymap.set('n', '<C-e>', toggle_nerd_tree, { noremap = true, silent = true })
