@@ -18,9 +18,11 @@ return {
                     "cssls",
                     "eslint",
                     "html",
-                    "tsp_server",
                     "jdtls",
-                    "pyright"
+                    "eslint",
+                    "ts_ls",
+                    "pyright",
+                    "gopls"
                 }
             })
         end
@@ -52,9 +54,19 @@ return {
             lspconfig.jdtls.setup({
                 capabilities = capabilities
             })
+            lspconfig.eslint.setup({
+                capabilities = capabilities
+            })
             lspconfig.pyright.setup({
                 capabilities = capabilities
             })
+            lspconfig.ts_ls.setup({
+                capabilities = capabilities
+            })
+            lspconfig.gopls.setup({
+                capabilities = capabilities
+            })
+
 
             vim.keymap.set('n', 'I', vim.lsp.buf.hover, {})
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})

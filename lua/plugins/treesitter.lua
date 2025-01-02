@@ -10,10 +10,14 @@ return {
                 "vim",
                 "vimdoc",
                 "typescript",
-                "python"
+                "python",
+                "go"
             },
             highlight = { enable = true },
             indent = { enable = true }
         })
+
+        -- Rename variables shortcut.
+        vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, { desc = "Rename variable" })
     end
 }

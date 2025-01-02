@@ -13,7 +13,7 @@ vim.o.laststatus = 2
 -- General Config.
 vim.o.encoding = "UTF-8"
 vim.o.number = true
-vim.o.wrap = true
+vim.o.wrap = false
 vim.o.mouse = "a"
 
 
@@ -43,6 +43,8 @@ vim.o.hlsearch = false
 vim.o.incsearch = true
 
 vim.opt.updatetime = 50
+
+vim.opt.signcolumn = "yes"
 
 
 -- Find in file.
